@@ -11,7 +11,7 @@ from  datetime import date
 app = Flask(__name__)
 
 
-api_key = 'AIzaSyCpRx5d6i9wo2mRWN0FZDIDo6nYGkvY8o8'
+api_key = 'Your api key'
 classifier = NudeClassifier()
 
 words = {"porn", "sex", 'sex,' "Sexy", "sexy", 'Amateur', 'Anal', 'Arab', 'Asian',
