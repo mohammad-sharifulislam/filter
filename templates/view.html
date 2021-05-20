@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <style>
+      .view {
+          text-align: center;
+          display: block
+      }
+
+      .frame {
+          display: block;
+          width: 80%;
+          height: 800px;
+      }
+
+      .area {
+          display: block;
+          width: 80%;
+      }
+    
+    
+    </style>
+      
+    <title>View</title>
+    
+  </head>
+  <body>
+  <div class="view">
+      <iframe src="https://www.youtube.com/embed/{{id}}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="frame"
+        >
+        </iframe>
+        <textarea class="area" placeholder="write your Notes here" id="note" style="height: 800px"></textarea>
+            <label >Notes</label>
+          </div>
+          <button type="submit" class="button" onclick="take_note();">Take it</button>
+
+  
+  </div>
+    
+
+      <script>
+        function take_note() {
+            var notes = document.getElementById("note").value
+            
+
+            var entry = {
+                Note: notes,
+                
+            }
+
+            fetch(`${window.origin}/take_note`, {
+                method: 'POST',
+                credentials: "include",
+                body: JSON.stringify(entry),
+                cache: "no-cache",
+                headers: new Headers({
+                    "content-type": "application/json"
+                })
+            }).then(function (response) {
+                if (response.status !== 200) {
+                    console.log(`Looks like there has been a problem with Status Code:${response.status}`);
+                    return;
+                }
+                
+            }).catch(function (error) {
+                console.log(error);
+            });
+            document.getElementById("note").value = ""
+        }
+    </script>
+  </body>
+</html>
