@@ -1,4 +1,4 @@
-If your linux is not running on a 64 bit processor, I don't think you would be able to run this.
+If your Computer is not running on a 64 bit processor, I don't think you would be able to run this.
 
 # filter
 
